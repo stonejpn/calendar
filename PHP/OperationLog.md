@@ -139,3 +139,11 @@ vhost $ sudo ln -s /vagrant/htdocs calendar
 phpinfo();
 ```
 
+
+
+### PHPのバージョンを指定してインストール
+
+なんかおかしいと思ったら、PHPのバージョンが7.2.xだった。
+
+ゲストを作り直す。
+

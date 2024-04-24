@@ -14,6 +14,10 @@ dnf install -y kernel-devel man man-pages vim tmux epel-release
 dnf update -y
 SCRIPT
 
+$setup_script = <<-SCRIPT
+dnf install -y nginx
+SCRIPT
+
 Vagrant.configure("2") do |config|
   config.vm.box = "bento/almalinux-8"
   config.vm.network "forwarded_port", guest: 80, host: 8080
@@ -33,4 +37,5 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "init", type: "shell", inline: $init_script
   config.vm.provision "tool", run: "never", type: "shell", inline: "/usr/bin/ptiagent-cmd --install"
+  config.vm.provision "setup", run: "never", type: "shell", inline: $setup_script
 end
